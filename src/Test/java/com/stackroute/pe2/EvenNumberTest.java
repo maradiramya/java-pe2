@@ -44,11 +44,5 @@ public class EvenNumberTest {
         assertNotEquals(expectedResult,actualResult);
 
     }
-    @Test
-    //this testcase check for ErrorMessege if given input is wrong
-    public void givenNumberShouldReturnErrorMessage()
-    {
-        String actualResults=evenNumber.isEven(" ");
-        assertEquals("enter correct input",actualResults);
-    }
+    
 }
