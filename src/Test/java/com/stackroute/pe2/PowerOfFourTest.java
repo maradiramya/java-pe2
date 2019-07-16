@@ -1,49 +1,69 @@
 package com.stackroute.pe2;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
 public class PowerOfFourTest {
-    private static PowerOfFour var;
-    @BeforeClass
-    public static void setup()
+    private PowerOfFour powerOfFour;
+    @Before
+    public void setup()
     {
-        System.out.println("Before Class");
-        var=new PowerOfFour();
+        //arrange
+        System.out.println("Inside Before");
+        this.powerOfFour=new PowerOfFour();
 
     }
-    @AfterClass
-    public static void tearDown()
+    @After
+    public void tearDown()
     {
-        System.out.println("After Class");
-        var=null;
+        System.out.println("Inside After");
+        powerOfFour=null;
     }
 
     @Test
-    public void givenNumberShouldReturnPowerofFour() {
-        int num=64;
-        String actualResult=var.powerOfFour(num);
+    //this testcase checks for given input is power of four
+    public void givenNumberShouldReturnPowerofFour()
+    {
+        //act
+        String actualResult=powerOfFour.powerOfFour(64);
         String expectedResult="the given number is power of four";
+        //assert
         assertEquals(expectedResult,actualResult);
 
 
     }
     @Test
-    public void givenNumberShouldNotReturnPowerofFour() {
-        int number=15;
-        String actualResult=var.powerOfFour(number);
+    //this testcase checks for given input is not a power of four
+    public void givenNumberShouldNotReturnPowerofFour()
+    {
+        //act
+        String actualResult=powerOfFour.powerOfFour(15);
         String expectedResult="the given number is not a power of four";
+        //assert
         assertEquals(expectedResult,actualResult);
 
 
     }
     @Test
-    public void givennumberAndnullShouldReturnErrorMassege() {
-        String actualResults = var.powerOfFour(0);
+    //this testcase checks for ErrorMessage if given input is incorrect
+    public void givennumberAndnullShouldReturnErrorMassege()
+    {
+        //act
+        String actualResults = powerOfFour.powerOfFour(0);
         assertNotNull(actualResults);
+        //assert
         assertEquals("null values are not allowed", actualResults);
+    }
+    @Test
+    //this testcase checks for ErrorMessage if given input is wrong
+    public void givenStringShouldReturnErrorMassege()
+    {
+        //act
+        String actualResults=powerOfFour.powerOfFour("abc");
+        //assert
+        assertEquals("enter correct input",actualResults);
+
+
     }
 }

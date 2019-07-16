@@ -1,52 +1,67 @@
 package com.stackroute.pe2;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
 public class ReversePallindromeTest {
-    private static ReversePallindrome reversepallindrome;
-    @BeforeClass
-    public static void setup()
+    private ReversePallindrome reversePallindrome;
+    @Before
+    public void setup()
     {
-        System.out.println("Before Class");
-        reversepallindrome=new ReversePallindrome();
+        //arrange
+        System.out.println("Inside Before");
+      this.reversePallindrome=new ReversePallindrome();
 
     }
-    @AfterClass
-            public static void tearDown()
+    @After
+    public  void tearDown()
     {
-        System.out.println("After Class");
-        reversepallindrome=null;
+        System.out.println("Inside After");
+        reversePallindrome=null;
     }
 
 
     @Test
-    public void givenNumberShouldReturnReverseString()
+    //this testcase checks for the  given input is pallindrome
+    public void givenStringShouldReturnPallindromeString()
     {
-        String s="aba";
-        String actualResult=reversepallindrome.reversePallindrome(s);
+        //act
+        String actualResult=reversePallindrome.reversePallindrome("aba");
         String expectedResult="is a pallindrome";
+        //assert
         assertEquals(expectedResult,actualResult);
 
     }
     @Test
-    public void givenNumberShouldNotReturnTheReverseString()
+    //this testcase checks for the given input is not a pallindrome
+    public void givenStringShouldReturnCounterPallindromeString()
     {
-        String s1="abcd";
-        String actualResult=reversepallindrome.reversePallindrome(s1);
+        //act
+        String actualResult=reversePallindrome.reversePallindrome("abcd");
         String expectedResult="is not a pallindrome";
+        //assert
         assertEquals(expectedResult,actualResult);
 
     }
     @Test
-    public void givennumberAndnullShouldReturnErrorMassege()
+    //this testcase checks for  ErrorMessage if given input is incorrect
+    public void givenStringAndNullShouldReturnErrorMessage()
     {
-        String actualResults=reversepallindrome.reversePallindrome(null);
+        //act
+        String actualResults=reversePallindrome.reversePallindrome(null);
         assertNotNull(actualResults);
+        //assert
         assertEquals("null values are not allowed",actualResults);
+    }
+    @Test
+    //this testcase checks for ErrorMessage if given input is wrong
+    public void givenStringShouldReturnErrorMessage()
+    {
+        //act
+        String actualResults=reversePallindrome.reversePallindrome("a");
+        //assert
+        assertEquals("enter a proper input",actualResults);
     }
 
 }

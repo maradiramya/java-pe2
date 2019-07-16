@@ -1,40 +1,54 @@
 package com.stackroute.pe2;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
 public class EvenNumberTest {
-    private static EvenNumber evennum;
-    @BeforeClass
-    public static void setup()
+    private EvenNumber evenNumber;
+
+    @Before
+    public void setup()
     {
-        System.out.println("After Class");
-         evennum = new EvenNumber();
+        //arrange
+        System.out.println("Inside Before");
+        this.evenNumber=new EvenNumber();
+
     }
-    @AfterClass
-    public static void tearDown()
+    @After
+    public void tearDown()
     {
-        System.out.println("After Class");
-        evennum=null;
+        System.out.println("Inside After");
+        evenNumber=null;
+
     }
 
     @Test
-    public void givenNumberShouldReturnEvenNumber() {
-
-        boolean actualResults=evennum.isEven(20);
+    //this testcase check for given number is EvenNumber
+    public void givenNumberShouldReturnEvenNumber()
+    {
+          //act
+        boolean actualResults=evenNumber.isEven(20);
         boolean expectedResult=true;
+        //assert
         assertEquals(expectedResult,actualResults);
 
     }
     @Test
+    //this testcase check for given number is not a EvenNumber
     public void givenNumberShouldNotReturnEvenNumber()
-    {
-        boolean actualResult=evennum.isEven(21);
+    {    //act
+        boolean actualResult=evenNumber.isEven(21);
         boolean expectedResult=true;
+        //assert
         assertNotEquals(expectedResult,actualResult);
 
+    }
+    @Test
+    //this testcase check for ErrorMessege if given input is wrong
+    public void givenNumberShouldReturnErrorMessage()
+    {
+        String actualResults=evenNumber.isEven(" ");
+        assertEquals("enter correct input",actualResults);
     }
 }

@@ -1,40 +1,45 @@
 package com.stackroute.pe2;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
 public class MemberTest {
-    private static Member memberVar;
+    private Member memberValues;
 
-    @BeforeClass
+    @Before
     public static void setup()
     {
-        System.out.println("Before Class");
-        memberVar = new Member();
+        //arrange
+        System.out.println("Inside Before");
 
     }
-    @AfterClass
+    @After
     public static void tearDown()
     {
-        System.out.println("After Class");
-        memberVar=null;
+
+        System.out.println("Inside After");
     }
 
     @Test
-    public void givenArrayShouldReturnMemberValue() {
-        String[] actualResult=memberVar.memberValues("Harry Potter",30,2500.3);
+    //this testcase check for the given input should be converted to string
+    public void givenArrayShouldReturnMemberValue()
+    {
+        //act
+        String[] actualResult=memberValues.memberValues("Harry Potter",30,2500.3);
         String[] expectedResult={"Harry Poter","30","2500.3"};
+        //assert
         assertArrayEquals(expectedResult,actualResult);
 
     }
     @Test
+    //this testcase check for ErrorMessege if given input is wrong
     public void givenNumberandnullShouldReturnErrorMessage()
     {
-        String[] actualResult=memberVar.memberValues(null);
+        //act
+        String[] actualResult=memberValues.memberValues(null);
         assertNotNull(actualResult);
+        //assert
         assertEquals("null value not allowed",actualResult);
 
     }
