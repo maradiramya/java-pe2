@@ -54,14 +54,6 @@ public class ReversePallindromeTest {
         //assert
         assertEquals("null values are not allowed",actualResults);
     }
-    @Test
-    //this testcase checks for ErrorMessage if given input is wrong
-    public void givenStringShouldReturnErrorMessage()
-    {
-        //act
-        String actualResults=reversePallindrome.reversePallindrome("a");
-        //assert
-        assertEquals("enter a proper input",actualResults);
-    }
+    
 
 }
